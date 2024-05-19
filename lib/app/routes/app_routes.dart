@@ -9,6 +9,8 @@ abstract class Routes {
   static const SEMUA_LAPORAN_USER = _Paths.SEMUA_LAPORAN_USER;
   static const AKUN_USER = _Paths.AKUN_USER;
   static const EDIT_AKUN_USER = _Paths.EDIT_AKUN_USER;
+  static const HOMEPAGE_ADMIN = _Paths.HOMEPAGE_ADMIN;
+  static const PROFIL_ADMIN = _Paths.PROFIL_ADMIN;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const SEMUA_LAPORAN_USER = '/semua-laporan-user';
   static const AKUN_USER = '/akun-user';
   static const EDIT_AKUN_USER = '/edit-akun-user';
+  static const HOMEPAGE_ADMIN = '/homepage-admin';
+  static const PROFIL_ADMIN = '/profil-admin';
 }

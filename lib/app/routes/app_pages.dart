@@ -6,10 +6,14 @@ import '../modules/edit_akun_user/bindings/edit_akun_user_binding.dart';
 import '../modules/edit_akun_user/views/edit_akun_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/homepage_admin/bindings/homepage_admin_binding.dart';
+import '../modules/homepage_admin/views/homepage_admin_view.dart';
 import '../modules/homepage_user/bindings/homepage_user_binding.dart';
 import '../modules/homepage_user/views/homepage_user_view.dart';
 import '../modules/pelaporan_user/bindings/pelaporan_user_binding.dart';
 import '../modules/pelaporan_user/views/pelaporan_user_view.dart';
+import '../modules/profil_admin/bindings/profil_admin_binding.dart';
+import '../modules/profil_admin/views/profil_admin_view.dart';
 import '../modules/semua_laporan_user/bindings/semua_laporan_user_binding.dart';
 import '../modules/semua_laporan_user/views/semua_laporan_user_view.dart';
 
@@ -50,6 +54,16 @@ class AppPages {
       name: _Paths.EDIT_AKUN_USER,
       page: () => const EditAkunUserView(),
       binding: EditAkunUserBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMEPAGE_ADMIN,
+      page: () => const HomepageAdminView(),
+      binding: HomepageAdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFIL_ADMIN,
+      page: () => const ProfilAdminView(),
+      binding: ProfilAdminBinding(),
     ),
   ];
 }
