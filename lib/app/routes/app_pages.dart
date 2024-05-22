@@ -26,7 +26,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.PELAPORAN_ADMIN,
-      page: () => const PelaporanAdminView(),
+      page: () => PelaporanAdminView(),
       binding: PelaporanAdminBinding(),
     ),
     GetPage(
