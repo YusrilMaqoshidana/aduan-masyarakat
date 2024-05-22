@@ -3,10 +3,10 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const HOME = _Paths.HOME;
+  static const PELAPORAN_ADMIN = _Paths.PELAPORAN_ADMIN;
 }
 
 abstract class _Paths {
   _Paths._();
-  static const HOME = '/home';
+  static const PELAPORAN_ADMIN = '/pelaporan-admin';
 }
