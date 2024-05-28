@@ -13,7 +13,7 @@ class HomeView extends GetView<HomeController> {
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: Obx(() {
           return AppBar(
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
             title: Text(
               controller.selectedIndex.value == 0
                   ? 'Hompage'
@@ -46,13 +46,13 @@ class HomeView extends GetView<HomeController> {
               label: 'Homepage',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.production_quantity_limits, color: Colors.black),
-              activeIcon: Icon(Icons.production_quantity_limits, color: Colors.white),
+              icon: Icon(Icons.report_gmailerrorred, color: Colors.black),
+              activeIcon: Icon(Icons.report_gmailerrorred, color: Colors.white),
               label: 'Laporan',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: Colors.black),
-              activeIcon: Icon(Icons.person, color: Colors.white),
+              icon: Icon(Icons.document_scanner_outlined, color: Colors.black),
+              activeIcon: Icon(Icons.document_scanner_outlined, color: Colors.white),
               label: 'Semua Laporan',
             ),
             BottomNavigationBarItem(
@@ -61,9 +61,6 @@ class HomeView extends GetView<HomeController> {
               label: 'Akun',
             ),
           ],
-          backgroundColor: Colors.blueAccent,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
         );
       }),
     );
