@@ -13,11 +13,44 @@ class HomepageUserView extends GetView<HomepageUserController> {
         title: const Text('HomepageUserView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomepageUserView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Column(
+              children: [
+                Image.asset('assets/images/logo.png', height: 125),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "J-CARE",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: 'Poppins-ExtraBold',
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1D3557),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(60, 0, 60, 0),
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "Selamat datang para pengguna, gunakan hak anda untuk melaporkan kerusakan fasilitas di sekitar anda!",
+                    style: TextStyle(
+                      color: const Color(0xFF1D3557),
+                      fontFamily: 'Poppins-Bold',
+                      fontSize: 24
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
