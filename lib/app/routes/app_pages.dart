@@ -1,3 +1,5 @@
+import 'package:aduan/app/modules/home/bindings/home_binding.dart';
+import 'package:aduan/app/modules/home/views/home_view.dart';
 import 'package:aduan/app/modules/pelaporan_admin/bindings/pelaporan_admin_binding.dart';
 import 'package:aduan/app/modules/pelaporan_admin/views/pelaporan_admin_view.dart';
 import 'package:get/get.dart';
@@ -112,6 +114,11 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
     ),
   ];
 }
