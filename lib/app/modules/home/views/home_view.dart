@@ -1,4 +1,3 @@
-import 'package:aduan/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,53 +9,63 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Obx(() {
+          return AppBar(
+            backgroundColor: Colors.blueAccent,
+            title: Text(
+              controller.selectedIndex.value == 0
+                  ? 'Hompage'
+                  : controller.selectedIndex.value == 1
+                  ? 'Laporan'
+                  : controller.selectedIndex.value == 2 ? 'Semua Laporan' : 'Akun'
+                  
+            ),
+            foregroundColor: Colors.white,
+            centerTitle: true,
+          );
+        }),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 20,
+      body: Obx(() {
+        return IndexedStack(
+          index: controller.selectedIndex.value,
+          children: controller.views,
+        );
+      }), 
+      bottomNavigationBar: Obx(() {
+        return BottomNavigationBar(
+          currentIndex: controller.selectedIndex.value,
+          onTap: (index) {
+            controller.selectedIndex.value = index;
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Colors.black),
+              activeIcon: Icon(Icons.home, color: Colors.white),
+              label: 'Homepage',
             ),
-            ElevatedButton(
-              onPressed: () {
-                Get.toNamed(Routes.HOMEPAGE_USER);
-              },
-              child: Text("Homepage"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.production_quantity_limits, color: Colors.black),
+              activeIcon: Icon(Icons.production_quantity_limits, color: Colors.white),
+              label: 'Laporan',
             ),
-            SizedBox(
-              height: 20,
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person, color: Colors.black),
+              activeIcon: Icon(Icons.person, color: Colors.white),
+              label: 'Semua Laporan',
             ),
-            ElevatedButton(
-              onPressed: () {
-                Get.toNamed(Routes.PELAPORAN_USER);
-              },
-              child: Text("Pelaporan"),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Get.toNamed(Routes.SEMUA_LAPORAN_USER);
-              },
-              child: Text("Semua Laporan"),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Get.toNamed(Routes.AKUN_USER);
-              },
-              child: Text("Akun"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person, color: Colors.black),
+              activeIcon: Icon(Icons.person, color: Colors.white),
+              label: 'Akun',
             ),
           ],
-        ),
-      ),
+          backgroundColor: Colors.blueAccent,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black,
+        );
+      }),
     );
   }
 }
