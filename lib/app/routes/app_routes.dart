@@ -11,6 +11,13 @@ abstract class Routes {
   static const EDIT_AKUN_USER = _Paths.EDIT_AKUN_USER;
   static const HOMEPAGE_ADMIN = _Paths.HOMEPAGE_ADMIN;
   static const PROFIL_ADMIN = _Paths.PROFIL_ADMIN;
+  static const ONBOARDING1 = _Paths.ONBOARDING1;
+  static const ONBOARDING2 = _Paths.ONBOARDING2;
+  static const ONBOARDING3 = _Paths.ONBOARDING3;
+  static const LOGIN = _Paths.LOGIN;
+  static const REGISTER = _Paths.REGISTER;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -23,4 +30,11 @@ abstract class _Paths {
   static const EDIT_AKUN_USER = '/edit-akun-user';
   static const HOMEPAGE_ADMIN = '/homepage-admin';
   static const PROFIL_ADMIN = '/profil-admin';
+  static const ONBOARDING1 = '/onboarding1';
+  static const ONBOARDING2 = '/onboarding2';
+  static const ONBOARDING3 = '/onboarding3';
+  static const LOGIN = '/login';
+  static const REGISTER = '/register';
+  static const RESET_PASSWORD = '/reset-password';
+  static const SPLASH = '/splash';
 }
