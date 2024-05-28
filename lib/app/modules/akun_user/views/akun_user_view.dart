@@ -6,148 +6,141 @@ import 'package:get/get.dart';
 import '../controllers/akun_user_controller.dart';
 
 class AkunUserView extends GetView<AkunUserController> {
-  const AkunUserView({Key? key}) : super(key: key);
+  const AkunUserView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AkunUserView'),
-        centerTitle: true,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset('assets/images/logo.png', height: 100),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Text("Username"),
-                SizedBox(
-                  height: 7,
+      body: Padding(
+        padding: const EdgeInsets.only(right: 20.0, left: 20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 80,
+              ),
+              const Image(
+                image: AssetImage('assets/images/logo.png'),
+                width: 100,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Nama Pengguna',
+                style: TextStyle(
+                  color: Color.fromRGBO(29, 53, 87, 1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
-                Text(
-                  "Dev Akses Mikail",
-                  style: TextStyle(
-                    fontFamily: 'Poppins-Medium',
-                    fontSize: 15,
-                    color: Color(0xFF1D3557),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text('Email Address'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Alamat Email',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Email Address"),
-                SizedBox(
-                  height: 7,
-                ),
-                Text(
-                  "devaksesmikail12@gmail.com",
-                  style: TextStyle(
-                    fontFamily: 'Poppins-Medium',
-                    fontSize: 15,
-                    color: Color(0xFF1D3557),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text('Phone Number'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Nomor Handphone',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Phone Number"),
-                SizedBox(
-                  height: 7,
-                ),
-                Text(
-                  "081398566760",
-                  style: TextStyle(
-                    fontFamily: 'Poppins-Medium',
-                    fontSize: 15,
-                    color: Color(0xFF1D3557),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text('Address'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Alamat Tempat Tinggal',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text("Address"),
-                SizedBox(
-                  height: 7,
-                ),
-                Text(
-                  "Perumahan Taman Gading Blok FF-05",
-                  style: TextStyle(
-                    fontFamily: 'Poppins-Medium',
-                    fontSize: 15,
-                    color: Color(0xFF1D3557),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(Routes.EDIT_AKUN_USER);
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
+                  backgroundColor: const Color.fromRGBO(69, 123, 157, 1),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                FractionallySizedBox(
-                  widthFactor: 1.0,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color(0xFF1D3557), // Warna background
-                      ),
-                      onPressed: () {
-                        Get.toNamed(Routes.EDIT_AKUN_USER);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.edit),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            "Edit",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white, // Warna teks
-                            ),
-                          ),
-                        ],
-                      )),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: FractionallySizedBox(
-                    widthFactor: 0.5,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color(0xFF1D3557), // Warna background
-                      ),
-                      onPressed: () {
-                        // Aksi ketika tombol ditekan
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            "Logout",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white, // Warna teks
-                            ),
-                          ),
-                        ],
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Edit',
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.offAllNamed(Routes.LOGIN);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
+                    fixedSize: const Size(110, 40),
+                  ),
+                  child: const Text(
+                    'Logout',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-              ],
-            ),
-          )
-        ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
