@@ -18,10 +18,13 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const SPLASH = _Paths.SPLASH;
+  static const PELAPORAN_ADMIN = _Paths.PELAPORAN_ADMIN;
+
 }
 
 abstract class _Paths {
   _Paths._();
+  static const PELAPORAN_ADMIN = '/pelaporan-admin';
   static const HOME = '/home';
   static const HOMEPAGE_USER = '/homepage-user';
   static const PELAPORAN_USER = '/pelaporan-user';

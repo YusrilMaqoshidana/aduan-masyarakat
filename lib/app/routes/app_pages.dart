@@ -1,11 +1,10 @@
+import 'package:aduan/app/modules/pelaporan_admin/bindings/pelaporan_admin_binding.dart';
+import 'package:aduan/app/modules/pelaporan_admin/views/pelaporan_admin_view.dart';
 import 'package:get/get.dart';
-
 import '../modules/akun_user/bindings/akun_user_binding.dart';
 import '../modules/akun_user/views/akun_user_view.dart';
 import '../modules/edit_akun_user/bindings/edit_akun_user_binding.dart';
 import '../modules/edit_akun_user/views/edit_akun_user_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/homepage_admin/bindings/homepage_admin_binding.dart';
 import '../modules/homepage_admin/views/homepage_admin_view.dart';
 import '../modules/homepage_user/bindings/homepage_user_binding.dart';
@@ -40,9 +39,9 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
+      name: _Paths.PELAPORAN_ADMIN,
+      page: () => PelaporanAdminView(),
+      binding: PelaporanAdminBinding(),
     ),
     GetPage(
       name: _Paths.HOMEPAGE_USER,
