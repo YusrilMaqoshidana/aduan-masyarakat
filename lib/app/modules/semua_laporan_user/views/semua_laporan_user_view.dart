@@ -11,10 +11,12 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
     final List<Map<String, String>> laporanData = [
       {
         'judul': 'Laporan 1',
-        'gambar': 'https://via.placeholder.com/150',
+        'gambar':
+            'https://w0.peakpx.com/wallpaper/149/258/HD-wallpaper-dark-vertical-portrait-display.jpg',
         'subtitle': 'Subtitle 1',
         'lokasi': 'Lokasi 1',
-        'deskripsi': 'Deskripsi laporan 1',
+        'deskripsi':
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis impedit dolores eveniet odio ad omnis adipisci iusto praesentium odit at id, quod quibusdam vitae accusamus modi similique nulla atque, est ipsam quia! Unde animi at, iste nihil amet architecto. Ex tempore distinctio, ratione quis labore itaque accusamus quisquam magni ad.',
         'username': 'user1',
         'time': '2h',
       },
@@ -57,70 +59,63 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
     ];
 
     return Scaffold(
-      body: ListView.builder(
+      body: PageView.builder(
         itemCount: laporanData.length,
+        scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           final laporan = laporanData[index];
-          return Card(
-            margin: EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(laporan['gambar']!),
-                  ),
-                  title: Text(laporan['username']!),
-                  subtitle: Text(laporan['time']!),
-                  trailing: Icon(Icons.more_vert),
-                ),
-                Image.network(
+          return Stack(
+            children: [
+              Positioned.fill(
+                child: Image.network(
                   laporan['gambar']!,
-                  width: double.infinity,
-                  height: 200,
                   fit: BoxFit.cover,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.favorite_border),
-                          SizedBox(width: 16),
-                          Icon(Icons.comment_outlined),
-                          SizedBox(width: 16),
-                          Icon(Icons.send),
-                        ],
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width * 0.03,
+                right: MediaQuery.of(context).size.width * 0.03,
+                bottom: MediaQuery.of(context).size.height * 0.03,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        laporan['username']!,
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       ),
-                      Icon(Icons.bookmark_border),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: laporan['username']!,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        TextSpan(text: ' ${laporan['deskripsi']}'),
-                      ],
                     ),
-                  ),
+                    Container(
+                      padding: EdgeInsets.only(
+                          right: MediaQuery.of(context).size.width * 0.09),
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: ' ${laporan['deskripsi']}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: Text(
-                    laporan['lokasi']!,
-                    style: TextStyle(color: Colors.grey),
-                  ),
+              ),
+              Positioned(
+                right: MediaQuery.of(context).size.width * 0.03,
+                bottom: MediaQuery.of(context).size.height * 0.25,
+                child: const Column(
+                  children: [
+                    Icon(Icons.favorite_border, color: Colors.white, size: 30),
+                    SizedBox(height: 20),
+                    Icon(Icons.send, color: Colors.white, size: 30),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           );
         },
       ),
