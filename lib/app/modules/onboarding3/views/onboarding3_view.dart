@@ -6,12 +6,12 @@ import 'package:get/get.dart';
 import '../controllers/onboarding3_controller.dart';
 
 class Onboarding3View extends GetView<Onboarding3Controller> {
-  const Onboarding3View({Key? key}) : super(key: key);
+  const Onboarding3View({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 241, 250, 238),
+        backgroundColor: const Color.fromARGB(255, 241, 250, 238),
       ),
       backgroundColor: const Color.fromARGB(255, 241, 250, 238),
       body: Center(
@@ -24,8 +24,8 @@ class Onboarding3View extends GetView<Onboarding3Controller> {
                 width: 200,
                 height: 200,
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Pencatatan & Verifikasi',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
@@ -33,55 +33,68 @@ class Onboarding3View extends GetView<Onboarding3Controller> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Petugas akan mencatat laporan anda',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
                   fontSize: 14,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 'dan silahkan mengecek pada menu',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
                   fontSize: 14,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 'daftar pengaduan',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
                   fontSize: 14,
                 ),
               ),
-              SizedBox(height: 20),
-              Image.asset(
-                'assets/images/page3.png',
-                width: 30,
-                height: 30,
-              ),
-              SizedBox(height: 100), // Menambahkan spasi antara gambar dan teks
+              const SizedBox(
+                  height: 100), // Menambahkan spasi antara gambar dan teks
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.offAllNamed(Routes.LOGIN);
-                        },
-                        child: Text(
-                          'Selanjutnya',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 29, 53, 87),
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 30),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.offAllNamed(Routes.LOGIN);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(150, 60),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: const BorderSide(width: 2, color: Colors.white),
                         ),
-                      )),
+                        backgroundColor: const Color.fromARGB(255, 29, 53, 87),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30.0,
+                            vertical: 15.0), // Hapus warna latar belakang
+                      ),
+                      child: const Row(
+                        children: [
+                          Text(
+                            'Mulai',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 15,),
+                          Icon(Icons.arrow_forward, color: Colors.white,),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],

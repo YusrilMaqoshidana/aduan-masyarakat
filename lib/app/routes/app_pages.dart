@@ -1,12 +1,11 @@
-import 'package:aduan/app/modules/home/bindings/home_binding.dart';
-import 'package:aduan/app/modules/home/views/home_view.dart';
-import 'package:aduan/app/modules/pelaporan_admin/bindings/pelaporan_admin_binding.dart';
-import 'package:aduan/app/modules/pelaporan_admin/views/pelaporan_admin_view.dart';
 import 'package:get/get.dart';
+
 import '../modules/akun_user/bindings/akun_user_binding.dart';
 import '../modules/akun_user/views/akun_user_view.dart';
 import '../modules/edit_akun_user/bindings/edit_akun_user_binding.dart';
 import '../modules/edit_akun_user/views/edit_akun_user_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
 import '../modules/homepage_admin/bindings/homepage_admin_binding.dart';
 import '../modules/homepage_admin/views/homepage_admin_view.dart';
 import '../modules/homepage_user/bindings/homepage_user_binding.dart';
@@ -19,6 +18,8 @@ import '../modules/onboarding2/bindings/onboarding2_binding.dart';
 import '../modules/onboarding2/views/onboarding2_view.dart';
 import '../modules/onboarding3/bindings/onboarding3_binding.dart';
 import '../modules/onboarding3/views/onboarding3_view.dart';
+import '../modules/pelaporan_admin/bindings/pelaporan_admin_binding.dart';
+import '../modules/pelaporan_admin/views/pelaporan_admin_view.dart';
 import '../modules/pelaporan_user/bindings/pelaporan_user_binding.dart';
 import '../modules/pelaporan_user/views/pelaporan_user_view.dart';
 import '../modules/profil_admin/bindings/profil_admin_binding.dart';
@@ -31,6 +32,8 @@ import '../modules/semua_laporan_user/bindings/semua_laporan_user_binding.dart';
 import '../modules/semua_laporan_user/views/semua_laporan_user_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/tap_geser/bindings/tap_geser_binding.dart';
+import '../modules/tap_geser/views/tap_geser_view.dart';
 
 part 'app_routes.dart';
 
@@ -112,13 +115,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SPLASH,
-      page: () => const SplashView(),
+      page: () => SplashView(),
       binding: SplashBinding(),
     ),
     GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAP_GESER,
+      page: () => TapGeserView(),
+      binding: TapGeserBinding(),
     ),
   ];
 }

@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:aduan/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -7,11 +10,18 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    navigateToOnboarding();
   }
 
   @override
   void onReady() {
     super.onReady();
+  }
+
+  void navigateToOnboarding() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.offAllNamed(Routes.TAP_GESER);
+    });
   }
 
   @override

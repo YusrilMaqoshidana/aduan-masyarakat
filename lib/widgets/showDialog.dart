@@ -22,11 +22,11 @@ Widget alert(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // Background color
                   foregroundColor: Colors.black, // Text color
-                  side: BorderSide(color: Colors.grey, width: 1), // Border
+                  side: const BorderSide(color: Colors.grey, width: 1), // Border
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0), // Remove rounded corners
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 14), // Padding
+                  padding: const EdgeInsets.symmetric(vertical: 14), // Padding
                 ),
                 child: const Text('Verifikasi: Informasi VALID'),
               ),
@@ -41,11 +41,11 @@ Widget alert(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // Background color
                   foregroundColor: Colors.black, // Text color
-                  side: BorderSide(color: Colors.grey, width: 1), // Border
+                  side: const BorderSide(color: Colors.grey, width: 1), // Border
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0), // Remove rounded corners
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 14), // Padding
+                  padding: const EdgeInsets.symmetric(vertical: 14), // Padding
                 ),
                 child: const Text('Verifikasi: Informasi INVALID'),
               ),

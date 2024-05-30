@@ -1,17 +1,17 @@
-import 'package:aduan/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
-  const SplashView({Key? key}) : super(key: key);
+  SplashView({super.key});
+  @override
+  final SplashController controller = Get.put(SplashController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 2, 57, 102),
+        backgroundColor: const Color.fromARGB(255, 2, 57, 102),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -27,8 +27,8 @@ class SplashView extends GetView<SplashController> {
                     height: 120,
                     fit: BoxFit.contain,
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     'J-Care',
                     style: TextStyle(
                       color: Colors.white,
@@ -38,8 +38,8 @@ class SplashView extends GetView<SplashController> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     'Layanan Pengaduan',
                     style: TextStyle(
                       color: Colors.white,
@@ -48,8 +48,8 @@ class SplashView extends GetView<SplashController> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     'Kerusakan Fasilitas Umum',
                     style: TextStyle(
                       color: Colors.white,
@@ -58,37 +58,16 @@ class SplashView extends GetView<SplashController> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 100,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.offAllNamed(Routes.ONBOARDING1);
-                          },
-                          child: Text(
-                            'Selanjutnya',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 29, 53, 87),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),
             ),
           ),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 30.0),
+          const SizedBox(height: 20),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 30.0),
             child: Text(
               "J-Care created by Success'Team",
               style: TextStyle(

@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../controllers/pelaporan_admin_controller.dart';
 
 class PelaporanAdminView extends GetView<PelaporanAdminController> {
-  PelaporanAdminView({super.key});
-  bool status = false;
+  const PelaporanAdminView({super.key});
+  final bool status = false;
 
   @override
   Widget build(BuildContext context) {

@@ -11,154 +11,174 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      extendBody: true, // Tambahkan properti extendBody
       backgroundColor: const Color.fromARGB(255, 2, 57, 102),
-      body: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 200.0),
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    width: 80,
-                    height: 80,
+      body: Container(
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: Image.asset(
+            'assets/images/logo.png',
+            width: 80,
+            height: 80,
+          ),
+        ),
+      ),
+      bottomSheet: Container(
+        height: MediaQuery.of(context).size.height * 0.65,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 241, 250, 238),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              offset: Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 30),
+                    Container(
+                      margin: const EdgeInsets.only(left: 25),
+                      child: const Text(
+                        'Email Address',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Masukkan alamat email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      margin: const EdgeInsets.only(left: 25),
+                      child: const Text(
+                        'Password',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: 'Masukkan password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                        margin: const EdgeInsets.only(right: 25),
+                        child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.RESET_PASSWORD);
+                            },
+                            child: const Text("Lupa password?")))
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.offAllNamed(Routes.HOME);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 2, 57, 102),
+                      fixedSize:
+                          Size(MediaQuery.of(context).size.width * 0.9, 50),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20))),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: MediaQuery.of(context).size.height / 2,
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 241, 250, 238),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 10,
-                    offset: Offset(0, -5),
-                  ),
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(height: 20),
-                  Container(
-                    width: double.infinity,
-                    child: Text(
-                      'Email Address',
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.left,
+                const SizedBox(height: 30),
+                RichText(
+                  text: TextSpan(
+                    text: 'Apakah belum memiliki akun?',
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 29, 53, 87),
+                      fontSize: 16,
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    width: double.infinity,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Masukkan alamat email',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' Register',
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 2, 57, 102),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Get.toNamed(Routes.REGISTER);
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'J-Care',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 29, 53, 87),
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    width: double.infinity,
-                    child: Text(
-                      'Password',
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    width: double.infinity,
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: 'Masukkan password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 30), // Adjusted height here
-                  Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.offAllNamed(Routes.HOME);
-                      },
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                            color: Colors.white), // Set text color to white
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 2, 57, 102),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 40),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Apakah belum memiliki akun?',
+                    TextSpan(
+                      text: ' created by Success Team',
                       style: TextStyle(
                         color: Color.fromARGB(255, 29, 53, 87),
                         fontSize: 16,
+                        fontWeight: FontWeight.normal,
                       ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: ' Register',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 2, 57, 102),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Get.toNamed(Routes.REGISTER);
-                            },
-                        ),
-                      ],
                     ),
-                  ),
-                  SizedBox(height: 40),
-                  RichText(
-                      text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'J-Care',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 29, 53, 87),
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: ' created by Success Team',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 29, 53, 87),
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
-                  )),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

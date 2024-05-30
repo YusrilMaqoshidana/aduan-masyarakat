@@ -1,4 +1,3 @@
-import 'package:aduan/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,7 +10,7 @@ class Onboarding1View extends GetView<Onboarding1Controller> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 241, 250, 238),
+        backgroundColor: const Color.fromARGB(255, 241, 250, 238),
       ),
       backgroundColor: const Color.fromARGB(255, 241, 250, 238),
       body: Center(
@@ -24,8 +23,8 @@ class Onboarding1View extends GetView<Onboarding1Controller> {
                 width: 200,
                 height: 200,
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Hubungi Petugas',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
@@ -33,59 +32,33 @@ class Onboarding1View extends GetView<Onboarding1Controller> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Segera menghubungi petugas',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
                   fontSize: 14,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 'Melalui aplikasi Layanan Pengaduan',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
                   fontSize: 14,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 'Kerusakan Fasilitas Umum',
                 style: TextStyle(
                   color: Color.fromARGB(255, 29, 53, 87),
                   fontSize: 14,
                 ),
               ),
-              SizedBox(
-                  height: 20), // Menambahkan spasi antara tulisan dan gambar
-              Image.asset(
-                'assets/images/page1.png', // Ganti dengan path gambar Anda
-                width: 30, // Sesuaikan dengan lebar gambar
-                height: 30, // Sesuaikan dengan tinggi gambar
-              ),
-              SizedBox(height: 100), // Menambahkan spasi antara gambar dan teks
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.offAllNamed(Routes.ONBOARDING2);
-                      },
-                      child: Text(
-                        'Selanjutnya',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 29, 53, 87),
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const SizedBox(
+                  height: 20),
+              const SizedBox(height: 100), 
             ],
           ),
         ),
