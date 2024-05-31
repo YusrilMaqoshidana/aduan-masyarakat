@@ -10,61 +10,94 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Container(
+          margin: const EdgeInsets.only(top: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/logo.png', height: 100),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    const Text("Silahkan Lengkapi Data Berikut ini"),
+                    const Text(
+                      "Silahkan Lengkapi \nData Berikut ini",
+                      style: TextStyle(
+                          color: Color(0xFF1D3557),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.topLeft,
-                      child: const Text("Judul Aduan"),
+                      child: Text(
+                        "Judul Aduan",
+                        style: TextStyle(
+                            color: Color(0xFF1D3557),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     const TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(width: 20)),
-                        label: Text("Lokasi"),
+                        hintText: "Masukan judul aduan",
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: const Text("Judul Aduan"),
                     ),
                     const SizedBox(
                       height: 10,
+                    ),
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Lokasi",
+                        style: TextStyle(
+                            color: Color(0xFF1D3557),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     const TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(width: 20)),
-                        label: Text("Lokasi Infrastruktur"),
+                        hintText: "Masukan lokasi Infrastruktur",
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.topLeft,
-                      child: const Text("Keterangan"),
+                      child: Text(
+                        "Keterangan",
+                        style: TextStyle(
+                            color: Color(0xFF1D3557),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     const TextField(
                       maxLines: 5,
@@ -87,6 +120,14 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                           onPressed: () {
                             // Aksi ketika tombol ditekan
                           },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              fixedSize: Size(
+                                  MediaQuery.of(context).size.width * 0.9, 50),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12)),
+                              shadowColor:
+                                  const Color.fromARGB(255, 2, 57, 102)),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -101,24 +142,22 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                     const SizedBox(
                       height: 10,
                     ),
-                    FractionallySizedBox(
-                      widthFactor: 1.0,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color(0xFF1D3557), // Warna background
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 2, 57, 102),
+                        fixedSize:
+                            Size(MediaQuery.of(context).size.width * 0.9, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        onPressed: () {
-                          // Aksi ketika tombol ditekan
-                        },
-                        child: const Text(
-                          "Ajukan",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white, // Warna teks
-                          ),
-                        ),
+                      ),
+                      child: const Text(
+                        'Ajukan',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                     ),
                   ],

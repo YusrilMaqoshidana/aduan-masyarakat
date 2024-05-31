@@ -47,7 +47,7 @@ class HomeView extends GetView<HomeController> {
             BottomNavigationBarItem(
               icon: Icon(Icons.home, color: Color.fromARGB(255, 68, 68, 68)),
               activeIcon: Icon(Icons.home, color:  Color.fromRGBO(29, 53, 87, 1)),
-              label: 'Homepage',
+              label: 'Beranda',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.report_gmailerrorred, color: Color.fromARGB(255, 68, 68, 68)),

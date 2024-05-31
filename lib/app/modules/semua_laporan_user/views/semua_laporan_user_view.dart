@@ -58,6 +58,9 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
       },
     ];
 
+    final SemuaLaporanUserController iconController =
+        Get.put(SemuaLaporanUserController());
+
     return Scaffold(
       body: PageView.builder(
         itemCount: laporanData.length,
@@ -79,26 +82,45 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Text(
                         laporan['username']!,
                         style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
                       ),
+                    ),
+                    Text(
+                      laporan['judul']!,
+                      style: TextStyle(
+                          color: Colors.grey[200],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                     ),
                     Container(
                       padding: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width * 0.09),
+                          right: MediaQuery.of(context).size.width * 0),
                       child: Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: ' ${laporan['deskripsi']}',
+                              text: '${laporan['deskripsi']}',
                               style: const TextStyle(color: Colors.white),
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        laporan['time']!,
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 126, 125, 125),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                     ),
                   ],
@@ -107,11 +129,33 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
               Positioned(
                 right: MediaQuery.of(context).size.width * 0.03,
                 bottom: MediaQuery.of(context).size.height * 0.25,
-                child: const Column(
+                child: Column(
                   children: [
-                    Icon(Icons.favorite_border, color: Colors.white, size: 30),
-                    SizedBox(height: 20),
-                    Icon(Icons.send, color: Colors.white, size: 30),
+                    Obx(() => IconButton(
+                          onPressed: iconController.toggleFavoriteColor,
+                          icon: Icon(
+                            Icons.favorite,
+                            color: iconController.favoriteColor.value,
+                            size: 30,
+                          ),
+                        )),
+                    Obx(
+                      () => Text(
+                        "${iconController.count.value}",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Obx(() => IconButton(
+                          onPressed: iconController.toggleSendColor,
+                          icon: Icon(
+                            Icons.send,
+                            color: iconController.sendColor.value,
+                            size: 30,
+                          ),
+                        )),
                   ],
                 ),
               ),
