@@ -16,7 +16,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
         'subtitle': 'Subtitle 1',
         'lokasi': 'Lokasi 1',
         'deskripsi':
-            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis impedit dolores eveniet odio ad omnis adipisci iusto praesentium odit at id, quod quibusdam vitae accusamus modi similique nulla atque, est ipsam quia! Unde animi at, iste nihil amet architecto. Ex tempore distinctio, ratione quis labore itaque accusamus quisquam magni ad.',
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis impedit dolores eveniet odio ad omnis adipisci iusto praesentium odit at id, quod quibusdam vitae accusamus modi similique nulla atque, est ipsam quia!',
         'username': 'user1',
         'time': '2h',
       },

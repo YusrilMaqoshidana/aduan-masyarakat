@@ -19,7 +19,7 @@ class HomeView extends GetView<HomeController> {
                   ? 'Homepage'
                   : controller.selectedIndex.value == 1
                       ? 'Laporan'
-                      : 'Akun',
+                      : 'Profil', style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             foregroundColor: Colors.white,
             centerTitle: true,
@@ -57,7 +57,7 @@ class HomeView extends GetView<HomeController> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               activeIcon: Icon(Icons.person, color: Colors.white),
-              label: 'Akun',
+              label: 'Profil',
             ),
           ],
         );

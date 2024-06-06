@@ -11,16 +11,12 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Container(
+      body:Container(
           margin: const EdgeInsets.only(top: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/logo.png', height: 100),
-              const SizedBox(
-                height: 10,
-              ),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
@@ -166,7 +162,6 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
             ],
           ),
         ),
-      ),
     );
   }
 }

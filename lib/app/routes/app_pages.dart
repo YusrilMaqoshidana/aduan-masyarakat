@@ -24,6 +24,8 @@ import '../modules/pelaporan_user/bindings/pelaporan_user_binding.dart';
 import '../modules/pelaporan_user/views/pelaporan_user_view.dart';
 import '../modules/profil_admin/bindings/profil_admin_binding.dart';
 import '../modules/profil_admin/views/profil_admin_view.dart';
+import '../modules/recovery_password/bindings/recovery_password_binding.dart';
+import '../modules/recovery_password/views/recovery_password_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
@@ -127,6 +129,11 @@ class AppPages {
       name: _Paths.TAP_GESER,
       page: () => TapGeserView(),
       binding: TapGeserBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECOVERY_PASSWORD,
+      page: () => const RecoveryPasswordView(),
+      binding: RecoveryPasswordBinding(),
     ),
   ];
 }

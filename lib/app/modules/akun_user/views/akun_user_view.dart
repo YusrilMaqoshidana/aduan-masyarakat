@@ -7,16 +7,17 @@ import '../controllers/akun_user_controller.dart';
 
 class AkunUserView extends GetView<AkunUserController> {
   const AkunUserView({super.key});
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-        child: SingleChildScrollView(
-          child: Column(
+        child: Column(
             children: [
               const SizedBox(
-                height: 80,
+                height: 30,
               ),
               const Image(
                 image: AssetImage('assets/images/logo.png'),
@@ -36,50 +37,15 @@ class AkunUserView extends GetView<AkunUserController> {
               const SizedBox(
                 height: 30,
               ),
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text('Email Address'),
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Alamat Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
+              Column(
+                children: [
+                  dataProfile("Email", "Ulul@gmail.com", context),
+                  dataProfile("Phone Address", "Ulul@gmail.com", context),
+                  dataProfile("Address", "Ulul@gmail.com", context),
+                ],
               ),
               const SizedBox(
-                height: 10,
-              ),
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text('Phone Number'),
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Nomor Handphone',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text('Address'),
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Alamat Tempat Tinggal',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 40,
+                height: 20,
               ),
               ElevatedButton(
                 onPressed: () {
@@ -135,13 +101,26 @@ class AkunUserView extends GetView<AkunUserController> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
             ],
           ),
         ),
-      ),
+    
+    );
+  }
+  Widget dataProfile(String nama, String data, BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(nama, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+        const SizedBox(height: 5,),
+        Container(
+          padding: const EdgeInsets.all(15),
+          width: MediaQuery.of(context).size.width * 0.86,
+          decoration: BoxDecoration(border: Border.all(width: 2, color: const Color.fromRGBO(29, 53, 87, 1)), borderRadius: BorderRadius.circular(12)),
+          child: Text(data, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+        ),
+        const SizedBox(height: 10,)
+      ],
     );
   }
 }

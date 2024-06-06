@@ -20,6 +20,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const PELAPORAN_ADMIN = _Paths.PELAPORAN_ADMIN;
   static const TAP_GESER = _Paths.TAP_GESER;
+  static const RECOVERY_PASSWORD = _Paths.RECOVERY_PASSWORD;
 }
 
 abstract class _Paths {
@@ -41,4 +42,5 @@ abstract class _Paths {
   static const RESET_PASSWORD = '/reset-password';
   static const SPLASH = '/splash';
   static const TAP_GESER = '/tap-geser';
+  static const RECOVERY_PASSWORD = '/recovery-password';
 }

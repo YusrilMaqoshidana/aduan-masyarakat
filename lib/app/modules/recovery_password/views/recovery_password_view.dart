@@ -1,13 +1,13 @@
-import 'package:aduan/app/modules/reset_password/controllers/reset_password_controller.dart';
 import 'package:aduan/app/routes/app_pages.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class ResetPasswordView extends GetView<ResetPasswordController> {
-  const ResetPasswordView({super.key});
-  @override
+import '../controllers/recovery_password_controller.dart';
+
+class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
+  const RecoveryPasswordView({super.key});
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -71,7 +71,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     Container(
                       margin: const EdgeInsets.only(left: 25),
                       child: const Text(
-                        'Email Address',
+                        'New Password',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
@@ -82,7 +82,29 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Masukkan alamat email',
+                          hintText: 'Masukkan password baru',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Container(
+                      margin: const EdgeInsets.only(left: 25),
+                      child: const Text(
+                        'Confirm Password',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Masukkan konfirmasi password',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -94,7 +116,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(Routes.RECOVERY_PASSWORD);
+                    Get.offAllNamed(Routes.LOGIN);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 2, 57, 102),
