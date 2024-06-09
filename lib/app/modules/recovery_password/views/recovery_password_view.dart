@@ -7,7 +7,7 @@ import '../controllers/recovery_password_controller.dart';
 
 class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
   const RecoveryPasswordView({super.key});
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
