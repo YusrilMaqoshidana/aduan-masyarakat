@@ -2,11 +2,15 @@ import 'package:aduan/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sp_util/sp_util.dart';
 
 import '../controllers/akun_user_controller.dart';
 
 class AkunUserView extends GetView<AkunUserController> {
-  const AkunUserView({super.key});
+  @override
+  final AkunUserController controller = Get.put(AkunUserController());
+  AkunUserView({super.key});
+  
   
 
   @override
@@ -26,9 +30,9 @@ class AkunUserView extends GetView<AkunUserController> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                'Nama Pengguna',
-                style: TextStyle(
+               Text(
+                '${SpUtil.getString("username")}',
+                style: const TextStyle(
                   color: Color.fromRGBO(29, 53, 87, 1),
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -39,8 +43,8 @@ class AkunUserView extends GetView<AkunUserController> {
               ),
               Column(
                 children: [
-                  dataProfile("Email", "Ulul@gmail.com", context),
-                  dataProfile("Phone Address", "Ulul@gmail.com", context),
+                  dataProfile("Email", '${SpUtil.getString("email")}' , context),
+                  dataProfile("Phone Number", "Ulul@gmail.com", context),
                   dataProfile("Address", "Ulul@gmail.com", context),
                 ],
               ),
@@ -86,7 +90,7 @@ class AkunUserView extends GetView<AkunUserController> {
                 alignment: Alignment.topLeft,
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.offAllNamed(Routes.LOGIN);
+                    controller.logout();
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

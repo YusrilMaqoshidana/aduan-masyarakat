@@ -7,8 +7,8 @@ class HomeController extends GetxController {
   var selectedIndex = 0.obs;
 
   final views = [
-    const SemuaLaporanUserView(),
-    const PelaporanUserView(),
-    const AkunUserView(),
+    SemuaLaporanUserView(),
+    PelaporanUserView(),
+    AkunUserView(),
   ];
 }

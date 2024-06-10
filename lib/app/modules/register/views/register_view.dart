@@ -80,6 +80,7 @@ class RegisterView extends GetView<RegisterController> {
                     Container(
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: TextField(
+                        controller: controller.usernametxt,
                         decoration: InputDecoration(
                           hintText: 'Masukkan usename',
                           border: OutlineInputBorder(
@@ -102,6 +103,7 @@ class RegisterView extends GetView<RegisterController> {
                     Container(
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: TextField(
+                        controller: controller.emailtxt,
                         decoration: InputDecoration(
                           hintText: 'Masukkan alamat email',
                           border: OutlineInputBorder(
@@ -124,6 +126,7 @@ class RegisterView extends GetView<RegisterController> {
                     Container(
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: TextField(
+                        controller: controller.passwordtxt,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Masukkan password',
@@ -138,7 +141,7 @@ class RegisterView extends GetView<RegisterController> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Get.offAllNamed(Routes.HOME);
+                    controller.reg();
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 2, 57, 102),

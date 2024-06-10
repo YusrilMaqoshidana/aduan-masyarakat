@@ -62,6 +62,7 @@ class LoginView extends GetView<LoginController> {
                     Container(
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: TextField(
+                        controller: controller.emailtxt,
                         decoration: InputDecoration(
                           hintText: 'Masukkan alamat email',
                           border: OutlineInputBorder(
@@ -84,6 +85,7 @@ class LoginView extends GetView<LoginController> {
                     Container(
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: TextField(
+                        controller: controller.passwordtxt,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Masukkan password',
@@ -111,7 +113,7 @@ class LoginView extends GetView<LoginController> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    Get.offAllNamed(Routes.HOME);
+                    controller.auth();
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 2, 57, 102),
