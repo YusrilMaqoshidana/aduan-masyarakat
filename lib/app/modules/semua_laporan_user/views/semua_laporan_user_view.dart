@@ -3,29 +3,28 @@ import 'package:get/get.dart';
 import '../controllers/semua_laporan_user_controller.dart';
 
 class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
+  
   const SemuaLaporanUserView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final SemuaLaporanUserController iconController = Get.put(SemuaLaporanUserController());
-
+    Get.put(SemuaLaporanUserController());
     return Scaffold(
       body: Obx(() {
-        if (iconController.laporanList.isEmpty) {
+        if (controller.laporanList.isEmpty) {
           return const Center(child: CircularProgressIndicator());
         }
 
         return PageView.builder(
-          itemCount: iconController.laporanList.length,
+          itemCount: controller.laporanList.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            final laporan = iconController.laporanList[index];
-            bool isLiked = laporan['liked'] ?? false;
+            final laporan = controller.laporanList[index];
             return Stack(
               children: [
                 Positioned.fill(
                   child: Image.network(
-                    laporan['gambar'] ?? '',
+                    laporan.gambar,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -39,7 +38,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10.0),
                         child: Text(
-                          laporan['user']['username'] ?? '',
+                          laporan.username,
                           style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -47,7 +46,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                         ),
                       ),
                       Text(
-                        laporan['judul'] ?? '',
+                        laporan.judul,
                         style: TextStyle(
                             color: Colors.grey[200],
                             fontWeight: FontWeight.bold,
@@ -59,7 +58,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: laporan['deskripsi'] ?? '',
+                                text: laporan.deskripsi,
                                 style: const TextStyle(color: Colors.white),
                               ),
                             ],
@@ -69,7 +68,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          laporan['created_at'] ?? '',
+                          laporan.createdAt,
                           style: const TextStyle(
                               color: Color.fromARGB(255, 126, 125, 125),
                               fontWeight: FontWeight.bold,
@@ -85,15 +84,15 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                   child: Column(
                     children: [
                       IconButton(
-                        onPressed: () => iconController.toggleFavoriteColor(index),
+                        onPressed: () => controller.toggleFavoriteColor(index),
                         icon: Icon(
-                          isLiked ? Icons.favorite : Icons.favorite_border,
-                          color: isLiked ? Colors.red : Colors.white,
+                          laporan.liked ? Icons.favorite : Icons.favorite_border,
+                          color: laporan.liked ? Colors.red : Colors.white,
                           size: 30,
                         ),
                       ),
                       Text(
-                        "${laporan['like']}",
+                        "${laporan.like}",
                         style: const TextStyle(
                           color: Colors.black,
                         ),
@@ -101,7 +100,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       const SizedBox(height: 10),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.send,
                           color: Colors.white,
                           size: 30,

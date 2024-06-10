@@ -151,7 +151,8 @@ class PelaporanAdminView extends GetView<PelaporanAdminController> {
                   children: [
                     const Icon(Icons.favorite),
                     Obx(() => Text(
-                          "${iconController.count.value}",
+                          // "${iconController.count.value}",
+                          '',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
