@@ -8,7 +8,9 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SemuaLaporanUserController());
+    // Menggunakan Get.put untuk memastikan controller terinisialisasi
+    final controller = Get.put(SemuaLaporanUserController());
+
     return Scaffold(
       body: Obx(() {
         if (controller.laporanList.isEmpty) {
@@ -20,14 +22,36 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             final laporan = controller.laporanList[index];
+
             return Stack(
               children: [
+                // Gambar latar belakang
                 Positioned.fill(
-                  child: Image.network(
-                    laporan.gambar,
-                    fit: BoxFit.cover,
-                  ),
+                  child: laporan['gambar'] != null && laporan['gambar'].isNotEmpty
+                      ? Image.network(
+                          laporan['gambar'],
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => const Center(
+                            child: Icon(
+                              Icons.image_not_supported,
+                              color: Colors.grey,
+                              size: 50,
+                            ),
+                          ),
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return const Center(child: CircularProgressIndicator());
+                          },
+                        )
+                      : const Center(
+                          child: Icon(
+                            Icons.image,
+                            color: Colors.grey,
+                            size: 50,
+                          ),
+                        ),
                 ),
+                // Konten laporan di bagian bawah
                 Positioned(
                   left: MediaQuery.of(context).size.width * 0.03,
                   right: MediaQuery.of(context).size.width * 0.03,
@@ -38,46 +62,40 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10.0),
                         child: Text(
-                          laporan.username,
+                          laporan['user']['username'] ?? 'Unknown User',
                           style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                      ),
-                      Text(
-                        laporan.judul,
-                        style: TextStyle(
-                            color: Colors.grey[200],
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0),
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: laporan.deskripsi,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ],
+                            fontSize: 20,
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          laporan.createdAt,
-                          style: const TextStyle(
-                              color: Color.fromARGB(255, 126, 125, 125),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
+                      Text(
+                        laporan['judul'] ?? 'No Title',
+                        style: TextStyle(
+                          color: Colors.grey[200],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        laporan['keterangan'] ?? 'No Description',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        laporan['created_at'] ?? 'Unknown Date',
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 126, 125, 125),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
                         ),
                       ),
                     ],
                   ),
                 ),
+                // Tombol Like dan jumlah like
                 Positioned(
                   right: MediaQuery.of(context).size.width * 0.03,
                   bottom: MediaQuery.of(context).size.height * 0.25,
@@ -86,20 +104,24 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       IconButton(
                         onPressed: () => controller.toggleFavoriteColor(index),
                         icon: Icon(
-                          laporan.liked ? Icons.favorite : Icons.favorite_border,
-                          color: laporan.liked ? Colors.red : Colors.white,
+                          (laporan['liked'] ?? false) ? Icons.favorite : Icons.favorite_border,
+                          color: (laporan['liked'] ?? false) ? Colors.red : Colors.white,
                           size: 30,
                         ),
                       ),
                       Text(
-                        "${laporan.like}",
+                        "${laporan['like'] ?? 0}",
                         style: const TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                       const SizedBox(height: 10),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Implementasi fitur send bisa ditambahkan di sini
+                        },
                         icon: const Icon(
                           Icons.send,
                           color: Colors.white,
