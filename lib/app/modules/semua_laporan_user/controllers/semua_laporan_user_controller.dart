@@ -21,9 +21,11 @@ class SemuaLaporanUserController extends GetxController {
       final response = await aduanProvider.getAduan();
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
-        laporanList.value = data.cast<Map<String, dynamic>>(); // Menyimpan data JSON mentah sebagai List<Map<String, dynamic>>
+        // Filter laporan yang statusnya "pending"
+        var filteredData = data.where((laporan) => laporan['status'] == 'pending').toList();
+        laporanList.value = filteredData.cast<Map<String, dynamic>>(); // Menyimpan data yang difilter sebagai List<Map<String, dynamic>>
         if (kDebugMode) {
-          print('Data aduan berhasil didapatkan: $data');
+          print('Data aduan berhasil didapatkan: $filteredData');
         }
       } else {
         Get.snackbar('Error', 'Failed to fetch laporan');
@@ -58,4 +60,25 @@ class SemuaLaporanUserController extends GetxController {
       Get.snackbar('Error', 'Failed to update like: $e');
     }
   }
+
+  void updateStatus(int aduanId, String newStatus) async {
+  final token = SpUtil.getString('access_token') ?? '';
+  if (token.isEmpty) {
+    Get.snackbar('Error', 'Invalid or missing token');
+    return;
+  }
+
+  try {
+    final response = await aduanProvider.updateStatus(aduanId, newStatus, token);
+    if (response.statusCode == 200) {
+      fetchLaporan(); // Refresh data setelah update status
+      Get.back(); // Kembali ke halaman sebelumnya setelah update status berhasil
+    } else {
+      Get.snackbar('Error', 'Failed to update status');
+    }
+  } catch (e) {
+    Get.snackbar('Error', 'Failed to update status: $e');
+  }
+}
+
 }

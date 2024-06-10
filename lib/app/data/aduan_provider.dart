@@ -35,4 +35,22 @@ class AduanProvider extends GetConnect {
       rethrow;
     }
   }
+
+  Future<http.Response> updateStatus(int id, String status, String token) async {
+  var url = Uri.parse('http://127.0.0.1:8000/api/auth/aduans/$id/status');
+  try {
+    var response = await http.put(url, body: jsonEncode({'status': status}), headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    if (kDebugMode) {
+      print('Update Status Response: ${response.body}');
+    }
+    return response;
+  } catch (e) {
+    print('Error updating Status: $e');
+    rethrow;
+  }
+}
+
 }

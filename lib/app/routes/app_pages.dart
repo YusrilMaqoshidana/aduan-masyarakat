@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/akun_user/bindings/akun_user_binding.dart';
 import '../modules/akun_user/views/akun_user_view.dart';
+import '../modules/detail_laporan_admin/bindings/detail_laporan_admin_binding.dart';
+import '../modules/detail_laporan_admin/views/detail_laporan_admin_view.dart';
 import '../modules/edit_akun_user/bindings/edit_akun_user_binding.dart';
 import '../modules/edit_akun_user/views/edit_akun_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -12,6 +14,8 @@ import '../modules/homepage_user/bindings/homepage_user_binding.dart';
 import '../modules/homepage_user/views/homepage_user_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/navbar_admin/bindings/navbar_admin_binding.dart';
+import '../modules/navbar_admin/views/navbar_admin_view.dart';
 import '../modules/onboarding1/bindings/onboarding1_binding.dart';
 import '../modules/onboarding1/views/onboarding1_view.dart';
 import '../modules/onboarding2/bindings/onboarding2_binding.dart';
@@ -134,6 +138,16 @@ class AppPages {
       name: _Paths.RECOVERY_PASSWORD,
       page: () => const RecoveryPasswordView(),
       binding: RecoveryPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_LAPORAN_ADMIN,
+      page: () => const DetailLaporanAdminView(),
+      binding: DetailLaporanAdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAVBAR_ADMIN,
+      page: () => const NavbarAdminView(),
+      binding: NavbarAdminBinding(),
     ),
   ];
 }

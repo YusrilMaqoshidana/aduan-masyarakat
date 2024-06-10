@@ -43,9 +43,15 @@ class LoginController extends GetxController {
             SpUtil.putString('username', user['username']);
             SpUtil.putString('email', user['email']);
             SpUtil.putString('image', user['image']);
+            SpUtil.putString('role', user['role']);
 
-            Get.snackbar("Berhasil", "Login berhasil");
-            Get.offAllNamed(Routes.HOME);
+            if (user['role'] == 'admin') {
+              Get.snackbar("Berhasil", "Login berhasil");
+              Get.offAllNamed(Routes.NAVBAR_ADMIN);
+            } else {
+              Get.snackbar("Berhasil", "Login berhasil");
+              Get.offAllNamed(Routes.HOME);
+            }
           } catch (e) {
             if (kDebugMode) {
               print("Error parsing JSON: $e");

@@ -20,7 +20,7 @@ class RegisterController extends GetxController {
         "username": username,
         "email": email,
         "password": password,
-        "role_id": 1,
+        "role": "user",
         "image": 'apa',
       };
       
