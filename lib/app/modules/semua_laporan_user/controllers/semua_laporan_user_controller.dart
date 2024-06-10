@@ -1,44 +1,50 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import '../../../data/aduan_provider.dart';
+import 'dart:convert';
 
 class SemuaLaporanUserController extends GetxController {
-  //TODO: Implement SemuaLaporanUserController
+  final AduanProvider aduanProvider = Get.put(AduanProvider());
 
-  var favoriteColor = Colors.white.obs;
-  var sendColor = Colors.white.obs;
+  var laporanList = <Map<String, dynamic>>[].obs;
   final count = 0.obs;
-
-  // Fungsi untuk mengubah warna ikon favorite
-  void toggleFavoriteColor() {
-    if (favoriteColor.value == Colors.white) {
-      favoriteColor.value = Colors.red;
-      count.value += 1;
-    } else {
-      favoriteColor.value = Colors.white;
-      count.value -= 1;
-    }
-  }
-
-  // Fungsi untuk mengubah warna ikon send
-  void toggleSendColor() {
-    sendColor.value =
-        sendColor.value == Colors.white ? Colors.grey : Colors.white;
-  }
 
   @override
   void onInit() {
     super.onInit();
+    fetchLaporan();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void fetchLaporan() async {
+    final response = await aduanProvider.getAduan();
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      laporanList.value = data.map((e) => e as Map<String, dynamic>).toList();
+      if (kDebugMode) {
+        print('Data aduan berhasil didapatkan');
+        print(laporanList);
+      }
+    } else {
+      Get.snackbar('Error', 'Failed to fetch laporan');
+    }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  void toggleFavoriteColor(int index) async {
+    var laporan = laporanList[index];
+    int newLikeCount;
+    if (laporan['liked'] == true) {
+      newLikeCount = laporan['like'] - 1;
+    } else {
+      newLikeCount = laporan['like'] + 1;
+    }
 
-  void increment() => count.value++;
+    final response = await aduanProvider.updateLike(laporan['id'], newLikeCount);
+    if (response.statusCode == 200) {
+      laporanList[index]['like'] = newLikeCount;
+      laporanList[index]['liked'] = !(laporan['liked'] ?? false);
+      laporanList.refresh();
+    } else {
+      Get.snackbar('Error', 'Failed to update like');
+    }
+  }
 }

@@ -67,7 +67,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.AKUN_USER,
-      page: () => const AkunUserView(),
+      page: () => AkunUserView(),
       binding: AkunUserBinding(),
     ),
     GetPage(
