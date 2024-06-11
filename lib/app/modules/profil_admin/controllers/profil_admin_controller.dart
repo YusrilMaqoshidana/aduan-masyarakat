@@ -1,23 +1,22 @@
 import 'package:get/get.dart';
+import 'package:sp_util/sp_util.dart';
+import '../../../data/logout_provider.dart';
+import '../../../routes/app_pages.dart';
 
 class ProfilAdminController extends GetxController {
-  //TODO: Implement ProfilAdminController
+  void logout() async {
+    final token = SpUtil.getString('access_token') ?? '';
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+    if (token.isNotEmpty) {
+      final response = await LogoutProvider().out(token);
+
+      if (response.statusCode == 200) {
+        SpUtil.clear();
+        Get.offAllNamed(Routes.LOGIN);
+        print('Berhasil logout dari API');
+      } else {
+        print('Gagal logout dari API');
+      }
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
