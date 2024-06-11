@@ -1,7 +1,8 @@
+import 'package:aduan/app/data/logout_provider.dart';
+import 'package:aduan/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:sp_util/sp_util.dart';
-import '../../../data/logout_provider.dart';
-import '../../../routes/app_pages.dart';
+
 
 class ProfilAdminController extends GetxController {
   void logout() async {
