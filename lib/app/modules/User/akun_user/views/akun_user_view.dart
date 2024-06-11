@@ -16,98 +16,100 @@ class AkunUserView extends GetView<AkunUserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-        child: Column(
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-              const Image(
-                image: AssetImage('assets/images/logo.png'),
-                width: 100,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-               Text(
-                '${SpUtil.getString("username")}',
-                style: const TextStyle(
-                  color: Color.fromRGBO(29, 53, 87, 1),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(right: 20.0, left: 20.0),
+          child: Column(
+              children: [
+                const SizedBox(
+                  height: 30,
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Column(
-                children: [
-                  dataProfile("Email", '${SpUtil.getString("email")}' , context),
-                  dataProfile("Phone Number", '${SpUtil.getString("phone_number")}', context),
-                  dataProfile("Address", '${SpUtil.getString("address")}', context),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(Routes.EDIT_AKUN_USER);
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                const Image(
+                  image: AssetImage('assets/images/logo.png'),
+                  width: 100,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                 Text(
+                  '${SpUtil.getString("username")}',
+                  style: const TextStyle(
+                    color: Color.fromRGBO(29, 53, 87, 1),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  backgroundColor: const Color.fromRGBO(69, 123, 157, 1),
                 ),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                const SizedBox(
+                  height: 30,
+                ),
+                Column(
                   children: [
-                    Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'Edit',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    dataProfile("Email", '${SpUtil.getString("email")}' , context),
+                    dataProfile("Phone Number", '${SpUtil.getString("phone_number")}', context),
+                    dataProfile("Address", '${SpUtil.getString("address")}', context),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: ElevatedButton(
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
                   onPressed: () {
-                    controller.logout();
+                    Get.toNamed(Routes.EDIT_AKUN_USER);
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
-                    fixedSize: const Size(110, 40),
+                    backgroundColor: const Color.fromRGBO(69, 123, 157, 1),
                   ),
-                  child: const Text(
-                    'Logout',
-                    style: TextStyle(color: Colors.white),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Edit',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 25,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.logout();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
+                      fixedSize: const Size(110, 40),
+                    ),
+                    child: const Text(
+                      'Logout',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+      ),
     
     );
   }
