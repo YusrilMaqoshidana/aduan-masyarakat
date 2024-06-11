@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class HomepageAdminController extends GetxController {
-  //TODO: Implement HomepageAdminController
+class AcceptLaporanAdminController extends GetxController {
+  //TODO: Implement AcceptLaporanAdminController
 
   final count = 0.obs;
   @override

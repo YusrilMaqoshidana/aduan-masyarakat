@@ -15,7 +15,7 @@ class LoginController extends GetxController {
     String password = passwordtxt.text;
 
     if (email.isEmpty || password.isEmpty) {
-      Get.snackbar("Gagal", "Isi dulu bang");
+      Get.snackbar("Gagal", "Pastikan email dan password tidak kosong");
     } else {
       var data = {
         "email": email,

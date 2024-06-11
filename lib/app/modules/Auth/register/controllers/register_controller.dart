@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-    TextEditingController usernametxt = TextEditingController(text: 'coba');
-    TextEditingController emailtxt = TextEditingController(text: 'coba@gmail.com');
-    TextEditingController passwordtxt = TextEditingController(text: 'coba123');
+    TextEditingController usernametxt = TextEditingController();
+    TextEditingController emailtxt = TextEditingController();
+    TextEditingController passwordtxt = TextEditingController();
 
   void reg() {
     String username = usernametxt.text;
@@ -13,7 +13,7 @@ class RegisterController extends GetxController {
     String password = passwordtxt.text;
 
     if (email.isEmpty || password.isEmpty) {
-          Get.snackbar("Gagal", "Isi dulu bang");
+          Get.snackbar("Gagal", "Pastikan email dan password tidak kosong");
     } else {
       var data = {
         "username": username,

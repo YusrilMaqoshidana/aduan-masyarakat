@@ -23,6 +23,9 @@ abstract class Routes {
   static const RECOVERY_PASSWORD = _Paths.RECOVERY_PASSWORD;
   static const DETAIL_LAPORAN_ADMIN = _Paths.DETAIL_LAPORAN_ADMIN;
   static const NAVBAR_ADMIN = _Paths.NAVBAR_ADMIN;
+  static const PERSETUJUAN_ADMIN = _Paths.PERSETUJUAN_ADMIN;
+  static const ACCEPT_LAPORAN_ADMIN = _Paths.ACCEPT_LAPORAN_ADMIN;
+  static const REJECT_LAPORAN_ADMIN = _Paths.REJECT_LAPORAN_ADMIN;
 }
 
 abstract class _Paths {
@@ -47,4 +50,7 @@ abstract class _Paths {
   static const RECOVERY_PASSWORD = '/recovery-password';
   static const DETAIL_LAPORAN_ADMIN = '/detail-laporan-admin';
   static const NAVBAR_ADMIN = '/navbar-admin';
+  static const PERSETUJUAN_ADMIN = '/persetujuan-admin';
+  static const ACCEPT_LAPORAN_ADMIN = '/accept-laporan-admin';
+  static const REJECT_LAPORAN_ADMIN = '/reject-laporan-admin';
 }

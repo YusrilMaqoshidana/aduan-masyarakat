@@ -4,6 +4,7 @@ import '../controllers/navbar_admin_controller.dart';
 
 class NavbarAdminView extends GetView<NavbarAdminController> {
   const NavbarAdminView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +14,9 @@ class NavbarAdminView extends GetView<NavbarAdminController> {
           return AppBar(
             backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
             title: Text(
-              controller.selectedIndex.value == 0 ? 'Homepage' : 'Profil',
+              controller.selectedIndex.value == 0 ? 'Homepage' 
+              : controller.selectedIndex.value == 1 ? 'Persetujuan' 
+              : 'Profil',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             foregroundColor: Colors.white,
@@ -43,6 +46,11 @@ class NavbarAdminView extends GetView<NavbarAdminController> {
               icon: Icon(Icons.home),
               activeIcon: Icon(Icons.home, color: Colors.white),
               label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.report),
+              activeIcon: Icon(Icons.report, color: Colors.white),
+              label: 'Persetujuan',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
