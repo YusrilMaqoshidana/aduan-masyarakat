@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../controllers/pelaporan_user_controller.dart';
 
 class PelaporanUserView extends GetView<PelaporanUserController> {
   const PelaporanUserView({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PelaporanUserController());
+    TextEditingController judulController = TextEditingController();
+    TextEditingController lokasiController = TextEditingController();
+    TextEditingController keteranganController = TextEditingController();
+
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body:Container(
+      body: SingleChildScrollView(
+        child: Container(
           margin: const EdgeInsets.only(top: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -30,9 +35,7 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                           fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -44,19 +47,17 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                             fontSize: 16),
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const TextField(
+                    const SizedBox(height: 5),
+                    TextField(
+                      controller: judulController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 20)),
+                          borderSide: BorderSide(width: 20),
+                        ),
                         hintText: "Masukan judul aduan",
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -68,19 +69,17 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                             fontSize: 16),
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const TextField(
+                    const SizedBox(height: 5),
+                    TextField(
+                      controller: lokasiController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 20)),
+                          borderSide: BorderSide(width: 20),
+                        ),
                         hintText: "Masukan lokasi Infrastruktur",
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -92,39 +91,59 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                             fontSize: 16),
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const TextField(
+                    const SizedBox(height: 5),
+                    TextField(
+                      controller: keteranganController,
                       maxLines: 5,
                       minLines: 3,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 1)),
+                          borderSide: BorderSide(width: 1),
+                        ),
                         label: Text("Keterangan Kerusakan Infrastruktur"),
                         alignLabelWithHint: true,
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     Align(
                       alignment: Alignment.centerRight,
                       child: FractionallySizedBox(
                         widthFactor: 0.5,
                         child: ElevatedButton(
-                          onPressed: () {
-                            // Aksi ketika tombol ditekan
+                          onPressed: () async {
+                            await Get.defaultDialog(
+                              title: "Pilih Gambar",
+                              content: Column(
+                                children: [
+                                  ListTile(
+                                    leading: Icon(Icons.camera),
+                                    title: Text('Kamera'),
+                                    onTap: () {
+                                      Get.back();
+                                      controller.pickImage(ImageSource.camera);
+                                    },
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.photo_album),
+                                    title: Text('Galeri'),
+                                    onTap: () {
+                                      Get.back();
+                                      controller.pickImage(ImageSource.gallery);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              fixedSize: Size(
-                                  MediaQuery.of(context).size.width * 0.9, 50),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
-                              shadowColor:
-                                  const Color.fromARGB(255, 2, 57, 102)),
-                          child: const Row(
+                            backgroundColor: Colors.white,
+                            fixedSize: Size(MediaQuery.of(context).size.width * 0.9, 50),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            shadowColor: const Color.fromARGB(255, 2, 57, 102),
+                          ),
+                          child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(Icons.upload_file),
@@ -135,15 +154,29 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
+                    Obx(() {
+                      if (controller.imageFile.value != null) {
+                        return Image.file(controller.imageFile.value!);
+                      } else {
+                        return Text('No image selected');
+                      }
+                    }),
+                    const SizedBox(height: 10),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        String judul = judulController.text;
+                        String lokasi = lokasiController.text;
+                        String keterangan = keteranganController.text;
+                        if (judul.isNotEmpty && lokasi.isNotEmpty && keterangan.isNotEmpty && controller.imageFile.value != null) {
+                          controller.submitAduanData(judul, lokasi, keterangan);
+                        } else {
+                          Get.snackbar('Error', 'Please fill all fields and upload an image');
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 2, 57, 102),
-                        fixedSize:
-                            Size(MediaQuery.of(context).size.width * 0.9, 50),
+                        fixedSize: Size(MediaQuery.of(context).size.width * 0.9, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -151,17 +184,19 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                       child: const Text(
                         'Ajukan',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
+      ),
     );
   }
 }

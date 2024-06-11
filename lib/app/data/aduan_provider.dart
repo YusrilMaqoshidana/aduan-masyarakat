@@ -6,7 +6,7 @@ import 'dart:convert';
 
 class AduanProvider extends GetConnect {
   Future<http.Response> getAduan() async {
-    var url = Uri.parse('http://127.0.0.1:8000/api/auth/aduans');
+    var url = Uri.parse('https://backend-j-care-production.up.railway.app/api/auth/aduans');
     try {
       var response = await http.get(url);
       if (kDebugMode) {
@@ -20,7 +20,7 @@ class AduanProvider extends GetConnect {
   }
 
   Future<http.Response> updateLike(int id, int newLikeCount, String token, bool statusLike) async {
-    var url = Uri.parse('http://127.0.0.1:8000/api/auth/aduans/$id');
+    var url = Uri.parse('https://backend-j-care-production.up.railway.app/api/auth/aduans/$id');
     try {
       var response = await http.put(url, body: jsonEncode({'like': newLikeCount, 'status_like': statusLike}), headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ class AduanProvider extends GetConnect {
   }
 
   Future<http.Response> updateStatus(int id, String status, String token) async {
-  var url = Uri.parse('http://127.0.0.1:8000/api/auth/aduans/$id/status');
+  var url = Uri.parse('https://backend-j-care-production.up.railway.app/api/auth/aduans/$id/status');
   try {
     var response = await http.put(url, body: jsonEncode({'status': status}), headers: {
       'Content-Type': 'application/json',
