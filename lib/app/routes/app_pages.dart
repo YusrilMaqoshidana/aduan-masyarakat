@@ -72,7 +72,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_AKUN_USER,
-      page: () => const EditAkunUserView(),
+      page: () => EditAkunUserView(),
       binding: EditAkunUserBinding(),
     ),
     GetPage(

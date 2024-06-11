@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:sp_util/sp_util.dart';
-import '../../../data/aduan_provider.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../../data/aduan_provider.dart';
 
 class SemuaLaporanUserController extends GetxController {
   final AduanProvider aduanProvider = Get.put(AduanProvider());
 
-  // Mengubah laporanList untuk menyimpan data dalam bentuk List<Map<String, dynamic>>
   var laporanList = <Map<String, dynamic>>[].obs;
 
   @override
@@ -21,7 +21,7 @@ class SemuaLaporanUserController extends GetxController {
       final response = await aduanProvider.getAduan();
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
-        laporanList.value = data.cast<Map<String, dynamic>>(); // Menyimpan data JSON mentah sebagai List<Map<String, dynamic>>
+        laporanList.value = data.cast<Map<String, dynamic>>();
         if (kDebugMode) {
           print('Data aduan berhasil didapatkan: $data');
         }
@@ -32,7 +32,7 @@ class SemuaLaporanUserController extends GetxController {
       Get.snackbar('Error', 'Failed to fetch laporan: $e');
     }
   }
-
+  
   void toggleFavoriteColor(int index) async {
     final token = SpUtil.getString('access_token') ?? '';
     if (token.isEmpty) {
@@ -45,11 +45,18 @@ class SemuaLaporanUserController extends GetxController {
     int newLikeCount = isLiked ? (laporan['like'] ?? 0) - 1 : (laporan['like'] ?? 0) + 1;
 
     try {
-      final response = await aduanProvider.updateLike(laporan['id'], newLikeCount, token, !isLiked);
+      final response = await aduanProvider.updateLike(
+        laporan['id'],
+        newLikeCount,
+        token,
+        !isLiked,
+      );
       if (response.statusCode == 200) {
-        laporan['like'] = newLikeCount;
-        laporan['liked'] = !isLiked;
-        laporanList[index] = laporan; 
+        laporanList[index] = {
+          ...laporan,
+          'like': newLikeCount,
+          'liked': !isLiked,
+        };
         laporanList.refresh();
       } else {
         Get.snackbar('Error', 'Failed to update like');
