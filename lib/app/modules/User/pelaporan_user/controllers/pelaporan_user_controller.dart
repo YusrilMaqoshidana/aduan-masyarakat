@@ -43,6 +43,7 @@ class PelaporanUserController extends GetxController {
 
       if (response.statusCode == 201) {
         Get.snackbar('Success', 'Aduan submitted successfully');
+        
       } else {
         Get.snackbar('Error', 'Failed to submit aduan');
       }
@@ -50,4 +51,5 @@ class PelaporanUserController extends GetxController {
       Get.snackbar('Error', 'Failed to submit aduan: $e');
     }
   }
+  
 }

@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import '../controllers/profil_admin_controller.dart';
 
 class ProfilAdminView extends GetView<ProfilAdminController> {
-  const ProfilAdminView({super.key});
+  @override
+  final ProfilAdminController controller = Get.put(ProfilAdminController());
+  ProfilAdminView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

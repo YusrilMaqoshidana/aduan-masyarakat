@@ -1,23 +1,37 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
+import '../../../../data/aduan_provider.dart';
 
 class RejectLaporanAdminController extends GetxController {
-  //TODO: Implement RejectLaporanAdminController
+  final AduanProvider aduanProvider = Get.put(AduanProvider());
 
-  final count = 0.obs;
+  var laporanList = <Map<String, dynamic>>[].obs;
+
   @override
   void onInit() {
     super.onInit();
+    fetchLaporan();
+    ever(laporanList, (_) {
+      fetchLaporan();
+    });
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void fetchLaporan() async {
+    try {
+      final response = await aduanProvider.getAduan();
+      if (response.statusCode == 200) {
+        List<dynamic> data = json.decode(response.body);
+        var filteredData = data.where((laporan) => laporan['status'] == 'rejected').toList();
+        laporanList.value = filteredData.cast<Map<String, dynamic>>();
+        if (kDebugMode) {
+          print('Data aduan berhasil didapatkan: $filteredData');
+        }
+      } else {
+        Get.snackbar('Error', 'Failed to fetch laporan');
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to fetch laporan: $e');
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
