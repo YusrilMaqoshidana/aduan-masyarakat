@@ -28,7 +28,6 @@ class EditAkunUserController extends GetxController {
       final response = await akunProvider.updateAkun(requestBody);
 
       if (response.statusCode == 200) {
-
         SpUtil.putString('username', username);
         SpUtil.putString('phone_number', phoneNumber);
         SpUtil.putString('address', address);

@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:aduan/global.dart';
 
 class LogoutProvider extends GetConnect {
   Future<http.Response> out(String token) async {
-    var url = Uri.parse('https://backend-j-care-production.up.railway.app/api/auth/logout');
+    var url = Uri.parse('$baseUrl/api/auth/logout');
     var response = await http.post(
       url,
       headers: <String, String>{

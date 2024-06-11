@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import 'package:sp_util/sp_util.dart';
+
+import '../../../../global.dart';
 
 class PelaporanUserController extends GetxController {
   var imageFile = Rx<File?>(null);
@@ -27,16 +27,15 @@ class PelaporanUserController extends GetxController {
       return;
     }
 
-    var uri = Uri.parse('https://backend-j-care-production.up.railway.app/api/auth/aduans');
+    var uri = Uri.parse('$baseUrl/api/auth/aduans');
     var request = http.MultipartRequest('POST', uri)
       ..fields['user_id'] = userId
       ..fields['judul'] = judul
       ..fields['lokasi'] = lokasi
       ..fields['keterangan'] = keterangan
-      ..fields['like'] = '0' // Assuming default like count is 0
-      ..fields['status'] = 'pending'; // Assuming default status is pending
+      ..fields['like'] = '0'
+      ..fields['status'] = 'pending'; 
 
-    // Attach image file
     request.files.add(await http.MultipartFile.fromPath('gambar', imageFile.value!.path));
 
     try {
@@ -44,7 +43,6 @@ class PelaporanUserController extends GetxController {
 
       if (response.statusCode == 201) {
         Get.snackbar('Success', 'Aduan submitted successfully');
-        // Clear form or navigate to another page
       } else {
         Get.snackbar('Error', 'Failed to submit aduan');
       }

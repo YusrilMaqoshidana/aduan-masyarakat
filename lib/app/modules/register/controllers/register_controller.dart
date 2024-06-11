@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-  //TODO: Implement RegisterController
     TextEditingController usernametxt = TextEditingController(text: 'coba');
     TextEditingController emailtxt = TextEditingController(text: 'coba@gmail.com');
     TextEditingController passwordtxt = TextEditingController(text: 'coba123');

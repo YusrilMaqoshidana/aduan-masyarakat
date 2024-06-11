@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:sp_util/sp_util.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../../data/aduan_provider.dart';
 
@@ -21,9 +20,8 @@ class SemuaLaporanUserController extends GetxController {
       final response = await aduanProvider.getAduan();
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
-        // Filter laporan yang statusnya "pending"
         var filteredData = data.where((laporan) => laporan['status'] == 'pending').toList();
-        laporanList.value = filteredData.cast<Map<String, dynamic>>(); // Menyimpan data yang difilter sebagai List<Map<String, dynamic>>
+        laporanList.value = filteredData.cast<Map<String, dynamic>>(); 
         if (kDebugMode) {
           print('Data aduan berhasil didapatkan: $filteredData');
         }
@@ -78,8 +76,8 @@ class SemuaLaporanUserController extends GetxController {
   try {
     final response = await aduanProvider.updateStatus(aduanId, newStatus, token);
     if (response.statusCode == 200) {
-      fetchLaporan(); // Refresh data setelah update status
-      Get.back(); // Kembali ke halaman sebelumnya setelah update status berhasil
+      fetchLaporan(); 
+      Get.back(); 
     } else {
       Get.snackbar('Error', 'Failed to update status');
     }
