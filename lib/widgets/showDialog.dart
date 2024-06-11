@@ -20,13 +20,13 @@ Widget alert(
               child: ElevatedButton(
                 onPressed: onPressedValid,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white, // Background color
-                  foregroundColor: Colors.black, // Text color
-                  side: const BorderSide(color: Colors.grey, width: 1), // Border
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black, 
+                  side: const BorderSide(color: Colors.grey, width: 1), 
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0), // Remove rounded corners
+                    borderRadius: BorderRadius.circular(0), 
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 14), // Padding
+                  padding: const EdgeInsets.symmetric(vertical: 14), 
                 ),
                 child: const Text('Verifikasi: Informasi VALID'),
               ),
@@ -39,13 +39,13 @@ Widget alert(
               child: ElevatedButton(
                 onPressed: onPressedInvalid,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white, // Background color
-                  foregroundColor: Colors.black, // Text color
-                  side: const BorderSide(color: Colors.grey, width: 1), // Border
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  side: const BorderSide(color: Colors.grey, width: 1), 
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0), // Remove rounded corners
+                    borderRadius: BorderRadius.circular(0),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 14), // Padding
+                  padding: const EdgeInsets.symmetric(vertical: 14), 
                 ),
                 child: const Text('Verifikasi: Informasi INVALID'),
               ),

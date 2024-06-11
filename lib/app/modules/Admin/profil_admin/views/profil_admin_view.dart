@@ -35,50 +35,8 @@ class ProfilAdminView extends GetView<ProfilAdminController> {
             const SizedBox(
               height: 20,
             ),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text('Email Address'),
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Alamat Email',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
             const SizedBox(
-              height: 10,
-            ),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text('Phone Number'),
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Nomor Handphone',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text('Address'),
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Alamat Tempat Tinggal',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 40,
+              height: 100,
             ),
             ElevatedButton(
               onPressed: () {},
@@ -116,7 +74,9 @@ class ProfilAdminView extends GetView<ProfilAdminController> {
             Align(
               alignment: Alignment.topLeft,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.logout();
+                },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
