@@ -3,12 +3,10 @@ import 'package:get/get.dart';
 import '../controllers/semua_laporan_user_controller.dart';
 
 class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
-  
   const SemuaLaporanUserView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Menggunakan Get.put untuk memastikan controller terinisialisasi
     final controller = Get.put(SemuaLaporanUserController());
 
     return Scaffold(
@@ -25,7 +23,6 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
 
             return Stack(
               children: [
-                // Gambar latar belakang
                 Positioned.fill(
                   child: laporan['gambar'] != null && laporan['gambar'].isNotEmpty
                       ? Image.network(
@@ -51,7 +48,6 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                           ),
                         ),
                 ),
-                // Konten laporan di bagian bawah
                 Positioned(
                   left: MediaQuery.of(context).size.width * 0.03,
                   right: MediaQuery.of(context).size.width * 0.03,
@@ -80,7 +76,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        laporan['keterangan'] ?? 'No Description',
+                        laporan['deskripsi'] ?? 'No Description',
                         style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 8),
@@ -95,7 +91,6 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                     ],
                   ),
                 ),
-                // Tombol Like dan jumlah like
                 Positioned(
                   right: MediaQuery.of(context).size.width * 0.03,
                   bottom: MediaQuery.of(context).size.height * 0.25,

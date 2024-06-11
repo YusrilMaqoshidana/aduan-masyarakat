@@ -44,8 +44,8 @@ class AkunUserView extends GetView<AkunUserController> {
               Column(
                 children: [
                   dataProfile("Email", '${SpUtil.getString("email")}' , context),
-                  dataProfile("Phone Number", "Ulul@gmail.com", context),
-                  dataProfile("Address", "Ulul@gmail.com", context),
+                  dataProfile("Phone Number", '${SpUtil.getString("phone_number")}', context),
+                  dataProfile("Address", '${SpUtil.getString("address")}', context),
                 ],
               ),
               const SizedBox(

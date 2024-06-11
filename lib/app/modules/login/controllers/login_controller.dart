@@ -42,6 +42,8 @@ class LoginController extends GetxController {
             SpUtil.putInt('id', user['id']);
             SpUtil.putString('username', user['username']);
             SpUtil.putString('email', user['email']);
+            SpUtil.putString('phone_number', user['phone_number']);
+            SpUtil.putString('address', user['address']);
             SpUtil.putString('image', user['image']);
             SpUtil.putString('role', user['role']);
 
