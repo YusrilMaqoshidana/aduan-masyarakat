@@ -14,6 +14,12 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
     TextEditingController lokasiController = TextEditingController();
     TextEditingController keteranganController = TextEditingController();
 
+    void reset() {
+      judulController.text = '';
+      lokasiController.text = '';
+      keteranganController.text = '';
+    };
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -170,6 +176,8 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                         String keterangan = keteranganController.text;
                         if (judul.isNotEmpty && lokasi.isNotEmpty && keterangan.isNotEmpty && controller.imageFile.value != null) {
                           controller.submitAduanData(judul, lokasi, keterangan);
+                          reset();
+                          controller.imageFile.value = null;
                         } else {
                           Get.snackbar('Error', 'Please fill all fields and upload an image');
                         }

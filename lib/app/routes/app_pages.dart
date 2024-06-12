@@ -85,7 +85,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFIL_ADMIN,
-      page: () => const ProfilAdminView(),
+      page: () => ProfilAdminView(),
       binding: ProfilAdminBinding(),
     ),
     GetPage(

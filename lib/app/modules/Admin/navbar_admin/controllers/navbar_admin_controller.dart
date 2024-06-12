@@ -9,6 +9,6 @@ class NavbarAdminController extends GetxController {
   final views = [
     const PelaporanAdminView(),
     const PersetujuanAdminView(),
-    const ProfilAdminView(),
+    ProfilAdminView(),
   ];
 }
