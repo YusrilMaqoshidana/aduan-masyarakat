@@ -76,7 +76,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        laporan['deskripsi'] ?? 'No Description',
+                        laporan['keterangan'] ?? 'No Description',
                         style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 8),
