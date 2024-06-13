@@ -11,6 +11,9 @@ dependencies:
   flutter: 
     sdk: flutter
   dots_indicator: ^2.1.1
+  sp_util: ^2.0.3
+  http: ^1.2.0
+  image_picker: ^1.0.8
 
 dev_dependencies: 
   flutter_lints: 4.0.0
