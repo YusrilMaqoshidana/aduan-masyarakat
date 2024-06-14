@@ -15,11 +15,16 @@ dependencies:
   http: ^1.2.0
   image_picker: ^1.0.8
   intl: ^0.17.0
-
+  flutter_launcher_icons: ^0.13.1
 dev_dependencies: 
   flutter_lints: 4.0.0
   flutter_test: 
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/images/logo.png"
 
 flutter: 
   uses-material-design: true
