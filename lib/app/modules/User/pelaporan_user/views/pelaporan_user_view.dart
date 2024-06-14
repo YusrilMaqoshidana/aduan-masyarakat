@@ -56,7 +56,7 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                     const SizedBox(height: 5),
                     TextField(
                       controller: judulController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(width: 20),
                         ),
@@ -78,7 +78,7 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                     const SizedBox(height: 5),
                     TextField(
                       controller: lokasiController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(width: 20),
                         ),
@@ -102,7 +102,7 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                       controller: keteranganController,
                       maxLines: 5,
                       minLines: 3,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(width: 1),
                         ),
@@ -122,16 +122,16 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                               content: Column(
                                 children: [
                                   ListTile(
-                                    leading: Icon(Icons.camera),
-                                    title: Text('Kamera'),
+                                    leading: const Icon(Icons.camera),
+                                    title: const Text('Kamera'),
                                     onTap: () {
                                       Get.back();
                                       controller.pickImage(ImageSource.camera);
                                     },
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.photo_album),
-                                    title: Text('Galeri'),
+                                    leading: const Icon(Icons.photo_album),
+                                    title: const Text('Galeri'),
                                     onTap: () {
                                       Get.back();
                                       controller.pickImage(ImageSource.gallery);
@@ -149,7 +149,7 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                             ),
                             shadowColor: const Color.fromARGB(255, 2, 57, 102),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(Icons.upload_file),
@@ -165,7 +165,7 @@ class PelaporanUserView extends GetView<PelaporanUserController> {
                       if (controller.imageFile.value != null) {
                         return Image.file(controller.imageFile.value!);
                       } else {
-                        return Text('No image selected');
+                        return const Text('No image selected');
                       }
                     }),
                     const SizedBox(height: 10),

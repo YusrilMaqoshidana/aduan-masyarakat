@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/detail_laporan_admin_controller.dart';
 
 class DetailLaporanAdminView extends GetView<DetailLaporanAdminController> {
-  const DetailLaporanAdminView({Key? key}) : super(key: key);
+  const DetailLaporanAdminView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,8 @@ class DetailLaporanAdminView extends GetView<DetailLaporanAdminController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Laporan Admin'),
+        title: const Text('Detail Laporan Admin', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
         centerTitle: true,
       ),
       body: Padding(
@@ -83,22 +84,44 @@ class DetailLaporanAdminView extends GetView<DetailLaporanAdminController> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.updateStatus(laporan['id'], 'verified');
-                    },
-                    child: Text('Verified'),
+                  SizedBox(
+                    height: 50,
+                    width: 110,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.updateStatus(laporan['id'], 'verified');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        backgroundColor: Colors.green[800],
+                        fixedSize: const Size(110, 40),
+                      ),
+                      child: Text('Verified', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),),
+                    ),
                   ),
                   const SizedBox(width: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.updateStatus(laporan['id'], 'rejected');
-                    },
-                    child: Text('Rejected'),
+                  SizedBox(
+                    height: 50,
+                    width: 110,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.updateStatus(laporan['id'], 'rejected');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        backgroundColor: Colors.red[800],
+                        fixedSize: const Size(110, 40),
+                      ),
+                      child: Text('Rejected', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white)),
+                    ),
                   ),
                 ],
               ),

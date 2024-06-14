@@ -10,9 +10,6 @@ class AkunUserView extends GetView<AkunUserController> {
   @override
   final AkunUserController controller = Get.put(AkunUserController());
   AkunUserView({super.key});
-  
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +28,7 @@ class AkunUserView extends GetView<AkunUserController> {
                 const SizedBox(
                   height: 10,
                 ),
-                 Text(
+                Text(
                   '${SpUtil.getString("username")}',
                   style: const TextStyle(
                     color: Color.fromRGBO(29, 53, 87, 1),

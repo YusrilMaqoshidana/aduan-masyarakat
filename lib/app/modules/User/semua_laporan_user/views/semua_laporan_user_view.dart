@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../controllers/semua_laporan_user_controller.dart';
 
 class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
@@ -20,6 +21,15 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             final laporan = controller.laporanList[index];
+
+            // Format tanggal menggunakan intl
+            String formattedDate;
+            if (laporan['created_at'] != null) {
+              DateTime dateTime = DateTime.parse(laporan['created_at']);
+              formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
+            } else {
+              formattedDate = 'Unknown Date';
+            }
 
             return Stack(
               children: [
@@ -81,7 +91,7 @@ class SemuaLaporanUserView extends GetView<SemuaLaporanUserController> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        laporan['created_at'] ?? 'Unknown Date',
+                        formattedDate,
                         style: const TextStyle(
                           color: Color.fromARGB(255, 126, 125, 125),
                           fontWeight: FontWeight.bold,

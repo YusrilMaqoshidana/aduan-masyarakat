@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sp_util/sp_util.dart';
 
 import '../controllers/profil_admin_controller.dart';
 
@@ -8,92 +9,85 @@ class ProfilAdminView extends GetView<ProfilAdminController> {
   @override
   final ProfilAdminController controller = Get.put(ProfilAdminController());
   ProfilAdminView({super.key});
+  Widget dataProfile(String nama, String data, BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          nama,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Container(
+          padding: const EdgeInsets.all(15),
+          width: MediaQuery.of(context).size.width * 0.86,
+          decoration: BoxDecoration(
+              border: Border.all(
+                  width: 2, color: const Color.fromRGBO(29, 53, 87, 1)),
+              borderRadius: BorderRadius.circular(12)),
+          child: Text(
+            data,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 100,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Center(
+            child: Column(
+              children: [
+                const Image(
+                  image: AssetImage('assets/images/logo.png'),
+                  width: 100,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Column(
+                  children: [
+                    dataProfile(
+                        "Nama", '${SpUtil.getString("username")}', context),
+                    dataProfile(
+                        "Email", '${SpUtil.getString("email")}', context),
+                  ],
+                ),
+              ],
             ),
-            const Image(
-              image: AssetImage('assets/images/logo.png'),
-              width: 100,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Administrator',
-              style: TextStyle(
-                color: Color.fromRGBO(29, 53, 87, 1),
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            ElevatedButton(
-              onPressed: () {},
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: ElevatedButton(
+              onPressed: () {
+                controller.logout();
+              },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                backgroundColor: const Color.fromRGBO(69, 123, 157, 1),
+                backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
+                fixedSize: const Size(110, 40),
               ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Edit',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                ],
+              child: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.white),
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: ElevatedButton(
-                onPressed: () {
-                  controller.logout();
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  backgroundColor: const Color.fromRGBO(29, 53, 87, 1),
-                  fixedSize: const Size(110, 40),
-                ),
-                child: const Text(
-                  'Logout',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     ));
   }

@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:sp_util/sp_util.dart';
 
 class LoginController extends GetxController {
-  TextEditingController emailtxt = TextEditingController(text: 'dev@gmail.com');
-  TextEditingController passwordtxt = TextEditingController(text: 'dev123');
+  TextEditingController emailtxt = TextEditingController();
+  TextEditingController passwordtxt = TextEditingController();
 
   void auth() {
     String email = emailtxt.text;

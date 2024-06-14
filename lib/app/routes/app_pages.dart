@@ -34,8 +34,7 @@ import '../modules/User/edit_akun_user/bindings/edit_akun_user_binding.dart';
 import '../modules/User/edit_akun_user/views/edit_akun_user_view.dart';
 import '../modules/User/home/bindings/home_binding.dart';
 import '../modules/User/home/views/home_view.dart';
-import '../modules/User/homepage_user/bindings/homepage_user_binding.dart';
-import '../modules/User/homepage_user/views/homepage_user_view.dart';
+
 import '../modules/User/pelaporan_user/bindings/pelaporan_user_binding.dart';
 import '../modules/User/pelaporan_user/views/pelaporan_user_view.dart';
 import '../modules/User/semua_laporan_user/bindings/semua_laporan_user_binding.dart';
@@ -58,11 +57,7 @@ class AppPages {
       page: () => const PelaporanAdminView(),
       binding: PelaporanAdminBinding(),
     ),
-    GetPage(
-      name: _Paths.HOMEPAGE_USER,
-      page: () => const HomepageUserView(),
-      binding: HomepageUserBinding(),
-    ),
+
     GetPage(
       name: _Paths.PELAPORAN_USER,
       page: () => const PelaporanUserView(),
