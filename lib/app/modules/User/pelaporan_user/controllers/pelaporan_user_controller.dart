@@ -34,7 +34,7 @@ class PelaporanUserController extends GetxController {
       ..fields['lokasi'] = lokasi
       ..fields['keterangan'] = keterangan
       ..fields['like'] = '0'
-      ..fields['status'] = 'pending'; 
+      ..fields['status'] = 'pending';
 
     request.files.add(await http.MultipartFile.fromPath('gambar', imageFile.value!.path));
 
